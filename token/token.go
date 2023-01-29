@@ -1,5 +1,17 @@
 package token
 
+var keywords = map[string]TokenType {
+    "fn": FUNCTION,
+    "let": LET,
+}
+
+func LookupIdentifier(identifier string) TokenType {
+    if tok, ok := keywords[identifier]; ok {
+       return tok 
+    }
+    return IDENTIFIER
+}
+
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
@@ -32,3 +44,4 @@ type Token struct {
 	Type    TokenType
 	Literal string
 }
+
