@@ -1,15 +1,15 @@
 package token
 
-var keywords = map[string]TokenType {
-    "fn": FUNCTION,
-    "let": LET,
+var keywords = map[string]TokenType{
+	"fn":  FUNCTION,
+	"let": LET,
 }
 
 func LookupIdentifier(identifier string) TokenType {
-    if tok, ok := keywords[identifier]; ok {
-       return tok 
-    }
-    return IDENTIFIER
+	if tok, ok := keywords[identifier]; ok {
+		return tok
+	}
+	return IDENTIFIER
 }
 
 const (
@@ -21,8 +21,14 @@ const (
 	INTEGER    = "INTEGER"
 
 	// Operators
-	ASSIGN = "="
-	PLUS   = "+"
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+	LT       = "<"
+	GT       = ">"
 
 	// Delimiters
 	COMMA     = ","
@@ -44,4 +50,3 @@ type Token struct {
 	Type    TokenType
 	Literal string
 }
-
