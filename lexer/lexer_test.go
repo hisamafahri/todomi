@@ -8,11 +8,13 @@ import (
 func TestNextToken(t *testing.T) {
 	input := `let five = 5;
 let ten = 10;
-   let add = fn(x, y) {
-     x + y;
+let add = fn(x, y) {
+    x + y;
 };
-   let result = add(five, ten);
-   `
+let result = add(five, ten);
+!-/*5;
+5 < 10 > 5;`
+
 	type SToken struct {
 		expectedType    token.TokenType
 		expectedLiteral string
@@ -54,6 +56,18 @@ let ten = 10;
 		{token.COMMA, ","},
 		{token.IDENTIFIER, "ten"},
 		{token.RPAREN, ")"},
+		{token.SEMICOLON, ";"},
+        {token.BANG, "!"},
+        {token.MINUS, "-"},
+        {token.SLASH, "/"},
+        {token.ASTERISK, "*"},
+        {token.INTEGER, "5"},
+		{token.SEMICOLON, ";"},
+        {token.INTEGER, "5"},
+        {token.LT, "<"},
+        {token.INTEGER, "10"},
+        {token.GT, ">"},
+        {token.INTEGER, "5"},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
 	}
